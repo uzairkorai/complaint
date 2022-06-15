@@ -189,7 +189,7 @@
     @auth
         <header>
             <div>
-                <img src="https://armyofwebsites.com/vbc-site/images/logo.svg" alt="">
+                <img src="https://ec.com.pk/assets/img/logo.svg" class="block h-10 w-auto fill-current" alt="">
             </div>
             <nav class="nav">
                 <ul class="nav_list">

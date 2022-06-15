@@ -35,12 +35,14 @@ Route::group(['middleware' => ['auth', 'role:user']], function () {
     Route::post('complaint', [ComplaintController::class, 'store'])->name('complaint');
 });
 
+Route::get('dashboard', [ComplaintController::class, 'dash'])->name('dashboard');
 
 // admin
 Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::get('complaints', [ComplaintController::class, 'index'])->name('complaints');
     Route::get('/change-status/{id}', [ComplaintController::class, 'changeStatus'])->name('changeStatus');
     Route::get('/view/{id}', [ComplaintController::class, 'view'])->name('view');
+
 
     Route::get('view', [ComplaintController::class, 'show'])->name('show');;
     Route::post('view', [ComplaintController::class, 'create'])->name('create');

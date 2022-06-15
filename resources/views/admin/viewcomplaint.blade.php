@@ -35,15 +35,28 @@
                                     <form method="POST" action="/view">
                                         @csrf
 
-                                        <div class="mt-6">
-                                            <h2 class="mb-2">Complaint a Reply</h2>
-                                            <textarea name="message" class="w-full p-2 text-sm focus:outline-none focus:ring" placeholder="Reply" rows="5"
-                                                id="message" required></textarea>
+                                        <div class="flex mt-6">
+                                            {{-- <h2 class="mb-2">Complaint a Reply</h2> --}}
+                                            <div>
+                                                <img style="border-radius: 100%" width="40" height="40"
+                                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVe0cFaZ9e5Hm9X-tdWRLSvoZqg2bjemBABA&usqp=CAU"
+                                                alt="">
+                                            </div>
+                                            <div  class="form-group" style="background: #F3F3F4;
+                                        border-radius: 6px;
+                                        border: none;
+                                        width: 100%;
+                                        margin-left: 15px;">
+                                                <textarea name="message" class="form-control"
+                                                    style="width: 100%;background: transparent;border: none;outline: none;resize: none;font-size: 12px;line-height: 20px;color: #212945;"
+                                                    placeholder="Reply" rows="5" id="message" required></textarea>
 
-                                            @error('message')
-                                                <span class="text-xs text-red-500">{{ $message }}</span>
-                                            @enderror
+                                                @error('message')
+                                                    <span class="text-xs text-red-500">{{ $message }}</span>
+                                                @enderror
+                                            </div>
                                         </div>
+
 
                                         <div class="flex justify-end mt-4 pt-4 ">
                                             <button type="submit"
@@ -53,14 +66,14 @@
                                     <div>
                                         @if (isset($comments))
                                             @foreach ($comments as $comment)
-                                            <div class="flex col-md-6 mb-4">
-                                                <img style="border-radius: 45%" width="30" height="40"
-                                                    src="https://images.unsplash.com/photo-1654378550363-f413d9686919?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
-                                                    alt="">
-                                                <span class="ml-2"></span>
-                                                {{ Auth::user()->name }} <br>
-                                            </div>
-                                                <p>{{ $comment->message }}</p>
+                                                <div class="flex col-md-6 mb-4">
+                                                    <img style="border-radius: 50%" width="40" height="40"
+                                                        src="https://images.unsplash.com/photo-1654378550363-f413d9686919?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
+                                                        alt="">
+                                                    <span class="ml-2"></span>
+                                                    {{ Auth::user()->name }} <br>
+                                                </div>
+                                                <p class="mb-3">{{ $comment->message }}</p>
                                             @endforeach
                                         @endif
                                     </div>

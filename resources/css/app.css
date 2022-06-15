@@ -12,3 +12,11 @@
     flex: 1 1 auto;
     padding: 1.25rem;
 }
+
+.reply {
+    background: #F3F3F4;
+    border-radius: 6px;
+    border: none;
+    width: 100%;
+    margin-left: 15px;
+}

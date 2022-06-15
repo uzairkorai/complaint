@@ -35,6 +35,25 @@ class ComplaintController extends Controller
         return view('admin.complaints',['complaints'=>$data]);
     }
 
+    function dash()
+    {
+        $data = Complaint::count();
+        $dataa = Complaint::where('status',1)->count();
+        $pending = Complaint::where('status',0)->count();
+
+
+        // $dataa = Complaint::all();
+
+        return view('dashboard',  compact('data', 'dataa', 'pending'));
+    }
+
+    // function dashb($id)
+    // {
+    //     $dataa = Complaint::find($id);
+
+    //     return view('components.data',['complain'=>$dataa]);
+    // }
+
     //
     public function changeStatus($id)
     {
