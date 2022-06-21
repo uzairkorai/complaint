@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Complaint;
 use App\Models\message;
+use Illuminate\Http\Client\Request as ClientRequest;
 use Illuminate\Http\Request;
+use Livewire\WithPagination;
 
 class ComplaintController extends Controller
 {
+
 
     public function store(Request $request)
     {
@@ -16,8 +19,10 @@ class ComplaintController extends Controller
         $path = $request->file('thumbnail')->storeAs('images', $fillName, 'public');
         $requestData["thumbnail"] = '/storage/'.$path;
         $request = request()->validate([
+            'email' => 'required',
             'subject' => 'required',
             'thumbnail' => 'required',
+            'comp_type' => 'required',
             'body' => 'required',
             'phone_number' => 'required',
         ]);
@@ -28,11 +33,31 @@ class ComplaintController extends Controller
         // return redirect('/dashboard');
     }
 
+
+    use WithPagination;
+
+    public $sortField = 'created_at';
+    public $sortDirection = 'desc';
+
+    protected $queryString = ['sortField', 'sortDirection'];
+
+    public function sortBy($field)
+    {
+        // if ($this->sortField === $field) {
+        //    $this->sortDirection = $this->sortDirection === 'asc' ? 'desc' : 'asc';
+        // } else {
+        //     $this->sortDirection = 'asc';
+        // }
+       dd('hello');
+        // $this->sortField = $field;
+    }
+
     function index()
     {
-        $data = Complaint::all();
+        return view('livewire.complaints',[
+        $data = Complaint::orderBy($this->sortField, $this->sortDirection)->paginate(10),
 
-        return view('admin.complaints',['complaints'=>$data]);
+            'complaints'=>$data]);
     }
 
     function dash()
@@ -87,4 +112,6 @@ class ComplaintController extends Controller
         dd($data);
         // return view('admin.viewcomplaint',['messages'=>$data]);
     }
+
+
 }

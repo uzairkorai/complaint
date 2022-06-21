@@ -3,6 +3,7 @@
 use App\Http\Controllers\ComplaintController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\ReplyController;
 
 /*
@@ -29,6 +30,7 @@ Route::group(['middleware' => ['auth']], function () {
 // for users
 Route::group(['middleware' => ['auth', 'role:user']], function () {
     Route::get('/dashboard/myprofile', [DashboardController::class, 'myprofile'])->name('dashboard.myprofile');
+    Route::put('/dashboard/myprofile', [DashboardController::class, 'update'])->name('dashboard.myprofile');
     Route::get('/complaint', function () {
         return view('complaint');
     });
@@ -46,6 +48,7 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
 
     Route::get('view', [ComplaintController::class, 'show'])->name('show');;
     Route::post('view', [ComplaintController::class, 'create'])->name('create');
+    Route::get('/send', [MailController::class, 'sendEmail']);
 });
 
 require __DIR__.'/auth.php';

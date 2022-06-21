@@ -22,11 +22,15 @@
                                         <label class="block mb-2 uppercase font-bold text-xs text-gray-700" for="name">
                                             Name
                                         </label>
-
                                         <input class="border border-gray-200 p-2 rounded w-full" type="text" name="name"
                                             value="{{Auth::user()->name}}" id="name" required>
-
-
+                                    </div>
+                                    <div class="mb-6">
+                                        <label class="block mb-2 uppercase font-bold text-xs text-gray-700" for="email">
+                                            Email
+                                        </label>
+                                        <input class="border border-gray-200 p-2 rounded w-full" type="text" name="email"
+                                            value="{{Auth::user()->email}}" id="email" required>
                                     </div>
                                     <div class="mb-6">
                                         <label class="block mb-2 uppercase font-bold text-xs text-gray-700" for="subject">
@@ -35,6 +39,28 @@
 
                                         <input class="border border-gray-200 p-2 rounded w-full" type="text" name="subject"
                                             value="{{ old('subject') }}" id="subject" required>
+
+                                        @error('subject')
+                                            <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+
+                                    <div class="mb-6">
+                                        <label class="block mb-2 uppercase font-bold text-xs text-gray-700" for="comp_type">
+                                            Complaint Type
+                                        </label>
+
+                                            <select class="custom-select" name="comp_type" id="comp_type" required>
+                                                <option value="" selected>Select</option>
+                                                <option value="1">incubator</option>
+                                                <option value="2">Bootcamp</option>
+                                                <option value="3">Elite</option>
+                                                <option value="4">Diploma Track</option>
+                                                <option value="5">VBC</option>
+                                                <option value="6">Services</option>
+                                                <option value="7">Teacher</option>
+                                                <option value="8">Meetups</option>
+                                              </select>
 
                                         @error('subject')
                                             <p class="text-red-500 text-xs mt-1">{{ $message }}</p>

@@ -16,8 +16,10 @@ class Complaints extends Migration
         Schema::create('complaints', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->boolean('status')->default(0);
+            $table->string('email');
             $table->string('subject');
+            $table->string('comp_type');
+            $table->boolean('status')->default(0);
             $table->string('thumbnail');
             $table->text('body');
             $table->string('phone_number')->nullable();

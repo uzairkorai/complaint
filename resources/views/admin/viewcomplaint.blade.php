@@ -1,5 +1,4 @@
-<x-app-layout>
-
+ <x-app-layout>
     <div class="bg-gray-400"></div>
     <main class=""
         style="margin-top: 0; padding: 0px 20px; padding-top: 40px;padding-bottom: 10px;  margin-bottom:40px;">
@@ -14,9 +13,21 @@
                             </div>
 
                             <div class="flex col-md-6 mb-2">
-                                <label for="">Subject: </label>
+                                <label for="">Name: </label>
                                 <span class="pl-14"></span>
                                 <p>{{ $complaints->name }}</p>
+                            </div>
+
+                            <div class="flex col-md-6 mb-2">
+                                <label for="">Email: </label>
+                                <span class="pl-14"></span>
+                                <p>{{ $complaints->email }}</p>
+                            </div>
+
+                            <div class="flex col-md-6 mb-2">
+                                <label for="">Contact no: </label>
+                                <span class="pl-14"></span>
+                                <p>{{ $complaints->phone_number }}</p>
                             </div>
 
                             <div class="flex col-md-6">
@@ -26,18 +37,34 @@
                             </div>
 
                             <div class="flex col-md-6">
+                                <label for="">Complaint Type: </label>
+                                <span class="pl-10"></span>
+                                <p>{{ $complaints->comp_type }}</p>
+                            </div>
+
+                            <div class="flex col-md-6">
+                                <label for="">Picture:</label>
+                                <span class="pl-7"></span>
+                                <img src="{{ asset($complaints['thumbnail']) }}" alt="" width="50" height="50"
+                                            class="img img-responsive">
+                            </div>
+
+                            <div class="flex col-md-6">
                                 <label for="">Description:</label>
                                 <span class="pl-7"></span>
                                 <p>{{ $complaints->body }}</p>
                             </div>
-                            @if (Auth::user()->hasRole('admin'))
+
+                            <div class="flex col-md-6">
+                                <button><a href="/send">Done</a></button>
+                            </div>
+                            {{-- @if (Auth::user()->hasRole('admin'))
                                 <div>
                                     <form method="POST" action="/view">
                                         @csrf
 
                                         <div class="flex mt-6">
-                                            {{-- <h2 class="mb-2">Complaint a Reply</h2> --}}
-                                            <div>
+                                             <div>
                                                 <img style="border-radius: 100%" width="40" height="40"
                                                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVe0cFaZ9e5Hm9X-tdWRLSvoZqg2bjemBABA&usqp=CAU"
                                                 alt="">
@@ -59,8 +86,8 @@
 
 
                                         <div class="flex justify-end mt-4 pt-4 ">
-                                            <button type="submit"
-                                                class="bg-blue-500 text-white uppercase font-semibold text-xs py-2 px-10 rounded-xl hover:bg-blue-600">Reply</button>
+                                            <button  type="submit"
+                                                class="bg-blue-500 text-white uppercase font-semibold text-xs py-2 px-10 rounded-xl hover:bg-blue-600"><a href="">reply</a></button>
                                         </div>
                                     </form>
                                     <div>
@@ -78,7 +105,7 @@
                                         @endif
                                     </div>
                                 </div>
-                            @endif
+                            @endif --}}
                         </div>
                     </div>
                 </div>
@@ -86,4 +113,4 @@
         </div>
     </main>
     </div>
-</x-app-layout>
+ </x-app-layout>

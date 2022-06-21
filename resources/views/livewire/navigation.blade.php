@@ -1,11 +1,12 @@
 <nav x-data="{ open: false }" class="navbar navbar-expand-lg navbar-light bg-light">
     <!-- Logo -->
-    <div class="navbar-brand">
-        <a href="{{ route('dashboard') }}">
+    <div class="container-fluid">
+    <div class="navbar-header">
+        <a class="navbar-brand" href="{{ route('dashboard') }}">
             <img src="https://ec.com.pk/assets/img/logo.svg" class="block h-10 w-auto fill-current" alt="">
         </a>
     </div>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -92,4 +93,5 @@
             </div>
         </div>
     </div>
+</div>
 </nav>
