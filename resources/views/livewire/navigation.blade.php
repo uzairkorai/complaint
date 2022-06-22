@@ -38,7 +38,37 @@
                         {{ __('Complaints') }}
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="/departments" :active="request() - > routeIs('departments')">
+                        {{ __('Departments') }}
+                    </a>
+                </li>
             @endif
+            @if (Auth::user()->hasRole('csr'))
+            <li class="nav-item">
+                <a class="nav-link " href="/complain" :active="request() - > routeIs('complain')">
+                    {{ __('Complaints') }}
+                </a>
+            </li>
+            @elseif(Auth::user()->hasRole('bootcamp'))
+            <li class="nav-item">
+                <a class="nav-link" href="bootcamp/complaint" :active="request() - > routeIs('bootcamp/complaint')">
+                    {{ __('Complaints') }}
+                </a>
+            </li>
+            @elseif(Auth::user()->hasRole('incubator'))
+            <li class="nav-item">
+                <a class="nav-link" href="incubator/complaint" :active="request() - > routeIs('incubator/complaint')">
+                    {{ __('Complaints') }}
+                </a>
+            </li>
+            @elseif(Auth::user()->hasRole('vbc'))
+            <li class="nav-item">
+                <a class="nav-link" href="vbc/complaint" :active="request() - > routeIs('vbc/complaint')">
+                    {{ __('Complaints') }}
+                </a>
+            </li>
+           @endif
         </ul>
 
         <div class="nav-item dropdown my-2  my-lg-0 ">

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\DepartmentsController;
 use App\Http\Controllers\ComplaintController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
@@ -42,6 +43,9 @@ Route::get('dashboard', [ComplaintController::class, 'dash'])->name('dashboard')
 // admin
 Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::get('complaints', [ComplaintController::class, 'index'])->name('complaints');
+    Route::get('/departments', function () {
+        return view('departments');
+    });
     Route::get('/change-status/{id}', [ComplaintController::class, 'changeStatus'])->name('changeStatus');
     Route::get('/view/{id}', [ComplaintController::class, 'view'])->name('view');
 
@@ -49,6 +53,47 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::get('view', [ComplaintController::class, 'show'])->name('show');;
     Route::post('view', [ComplaintController::class, 'create'])->name('create');
     Route::get('/send', [MailController::class, 'sendEmail']);
+    Route::get('/sent', [MailController::class, 'Incubator']);
+
+    Route::post('/departments', [DepartmentsController::class, 'store']);
+});
+
+Route::group(['middleware' => ['auth', 'role:csr']], function () {
+    Route::get('complain', [ComplaintController::class, 'index'])->name('complaints');
+
+    // Route::get('/change-status/{id}', [ComplaintController::class, 'changeStatus'])->name('changeStatus');
+    Route::get('/views/{id}', [ComplaintController::class, 'view'])->name('view');
+
+
+    Route::get('views', [ComplaintController::class, 'show'])->name('show');;
+    Route::post('views', [ComplaintController::class, 'create'])->name('create');
+    // Route::get('/send', [MailController::class, 'sendEmail']);
+
+});
+
+Route::group(['middleware' => ['auth', 'role:bootcamp']], function () {
+    Route::get('bootcamp/complaint', [ComplaintController::class, 'index'])->name('complaints');
+
+    // Route::get('/change-status/{id}', [ComplaintController::class, 'changeStatus'])->name('changeStatus');
+    Route::get('views/{id}', [ComplaintController::class, 'view'])->name('view');
+
+
+    Route::get('views', [ComplaintController::class, 'show'])->name('show');;
+    Route::post('views', [ComplaintController::class, 'create'])->name('create');
+    // Route::get('send', [MailController::class, 'sendEmail']);
+
+});
+Route::group(['middleware' => ['auth', 'role:incubator']], function () {
+    Route::get('incubator/complaint', [ComplaintController::class, 'index'])->name('complaints');
+
+    // Route::get('/change-status/{id}', [ComplaintController::class, 'changeStatus'])->name('changeStatus');
+    Route::get('views/{id}', [ComplaintController::class, 'view'])->name('view');
+
+
+    Route::get('views', [ComplaintController::class, 'show'])->name('show');;
+    Route::post('views', [ComplaintController::class, 'create'])->name('create');
+    // Route::get('send', [MailController::class, 'sendEmail']);
+
 });
 
 require __DIR__.'/auth.php';

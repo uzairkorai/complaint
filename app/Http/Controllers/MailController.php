@@ -19,12 +19,22 @@ class MailController extends Controller
         // return "Email Sent";
 
         $data=['name'=>"uzair",'data'=>'Your Complaint is resolved'];
-        $user['to']='testloremm@gmail.com';
+        $user['to']=['uzairahmed097@gmail.com', 'testloremm@gmail.com'];
         Mail::send('emails.TestMail', $data, function($messages) use ($user) {
             $messages->to($user['to']);
             $messages->subject('Hello Sir');
 
         });
         return redirect('/dashboard')->with('flash', 'resolved!');
+    }
+    public function Incubator()
+    {
+        $data=['name'=>"uzairr",'data'=>'Resolved your complaint'];
+        $user['to']=['uzairahmed097@gmail.com', 'testloremm@gmail.com'];
+        Mail::send('emails.Incubator', $data, function($messages) use ($user) {
+            $messages->to($user['to']);
+            $messages->subject('Hello Uzair');
+        });
+        return redirect('/complaints')->with('flash', 'resolved!');
     }
 }

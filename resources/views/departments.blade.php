@@ -1,4 +1,4 @@
-<x-guest-layout>
+<x-app-layout>
     <x-auth-card>
         <x-slot name="logo">
             <div>
@@ -9,7 +9,7 @@
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-        <form method="POST" action="{{ route('register') }}">
+        <form method="POST" action="/departments">
             @csrf
 
             <!-- Name -->
@@ -24,8 +24,7 @@
             <div class="mt-4">
                 <x-label for="email" :value="__('Email')" />
 
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')"
-                    required />
+                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
             </div>
 
             <!-- Password -->
@@ -44,39 +43,32 @@
                     name="password_confirmation" required />
             </div>
 
-            <div class="role mt-4">
-                Role type
+            {{-- Role type --}}
+            <div class="mt-4">
                 <x-label for="role_id" value="{{ __('Register as:') }}" />
                 <select name="role_id"
                     class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
-                    <option value="user" selected>User</option>
+                    {{-- <option value="writer">Writer</option> --}}
+                    <option value="csr">CSR</option>
+                    <option value="incubator">incubator</option>
+                    <option value="bootcamp">Bootcamp</option>
+                    {{-- <option value="admin">Admin</option> --}}
+                    {{-- <option value="elite">Elite</option>
+                    <option value="vbc">VBC</option>
+                    <option value="meetups">Meetups</option>
+                    <option value="teachers">teachers</option>
+                    <option value="services">Services</option>
+                    <option value="digitalmarketing">Digital Marketing</option> --}}
+
                 </select>
             </div>
 
             <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
-                </a>
 
                 <x-button class="ml-4">
                     {{ __('Register') }}
                 </x-button>
             </div>
-            <div style="text-align: center">
-                @if (Route::has('login'))
-                    <a href="{{ route('login') }}"
-                        class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Login</a>
-                @endif
-            </div>
-
         </form>
     </x-auth-card>
-</x-guest-layout>
-
-<style>
-    @media screen and (max-width:2000px) {
-        .role {
-            display: none
-        }
-    }
-</style>
+</x-app-layout>

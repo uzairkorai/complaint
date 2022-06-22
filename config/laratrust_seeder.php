@@ -23,6 +23,42 @@ return [
         ],
         'user' => [
             'profile' => 'r,u',
+        ],
+        'incubator' => [
+            'users' => 'c,r,u,d',
+            'profile' => 'r,u'
+        ],
+        'csr' => [
+            'users' => 'c,r,u,d',
+            'profile' => 'r,u'
+        ],
+        'bootcamp' => [
+            'users' => 'c,r,u,d',
+            'profile' => 'r,u'
+        ],
+        'elite' => [
+            'users' => 'c,r,u,d',
+            'profile' => 'r,u'
+        ],
+        'vbc' => [
+            'users' => 'c,r,u,d',
+            'profile' => 'r,u'
+        ],
+        'meetups' => [
+            'users' => 'c,r,u,d',
+            'profile' => 'r,u'
+        ],
+        'teachers' => [
+            'users' => 'c,r,u,d',
+            'profile' => 'r,u'
+        ],
+        'services' => [
+            'users' => 'c,r,u,d',
+            'profile' => 'r,u'
+        ],
+        'digitalmarketing' => [
+            'users' => 'c,r,u,d',
+            'profile' => 'r,u'
         ]
     ],
 

@@ -10,5 +10,5 @@ class Complaint extends Model
 {
     use HasFactory;
     protected $primaryKey = 'id';
-    protected $fillable = ['name', 'email', 'subject', 'comp_type', 'thumbnail', 'body',  'phone_number', 'status'];
+    protected $fillable = ['name', 'email', 'subject', 'comp_type', 'priority', 'thumbnail', 'body',  'phone_number', 'status'];
 }

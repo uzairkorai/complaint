@@ -52,17 +52,19 @@
 
                                             <select class="custom-select" name="comp_type" id="comp_type" required>
                                                 <option value="" selected>Select</option>
-                                                <option value="1">incubator</option>
-                                                <option value="2">Bootcamp</option>
-                                                <option value="3">Elite</option>
-                                                <option value="4">Diploma Track</option>
-                                                <option value="5">VBC</option>
-                                                <option value="6">Services</option>
-                                                <option value="7">Teacher</option>
-                                                <option value="8">Meetups</option>
+                                                <option value="incubator">incubator</option>
+                                                <option value="Bootcamp">Bootcamp</option>
+                                                <option value="CSR">CSR</option>
+                                                {{-- <option value="Elite">Elite</option>
+                                                <option value="DT">Diploma Track</option>
+                                                <option value="VBC">VBC</option>
+                                                <option value="Services">Services</option>
+                                                <option value="Teacher">Teacher</option>
+                                                <option value="Meetups">Meetups</option>
+                                                <option value="digitalmarketing">Digital Marketing</option> --}}
                                               </select>
 
-                                        @error('subject')
+                                        @error('comp_type')
                                             <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                                         @enderror
                                     </div>
@@ -89,6 +91,22 @@
                                             required>{{ old('body') }}</textarea>
 
                                         @error('body')
+                                            <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+
+                                    <div class="mb-6">
+                                        <label class="block mb-2 uppercase font-bold text-xs text-gray-700" for="priority">
+                                            Priority
+                                        </label>
+
+                                            <select class="custom-select" name="priority" id="priority" required>
+                                                <option value="" selected>Select</option>
+                                                <option value="0">Average</option>
+                                                <option value="1">Very High</option>
+                                              </select>
+
+                                        @error('priority')
                                             <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                                         @enderror
                                     </div>

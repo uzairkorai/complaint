@@ -19,6 +19,7 @@ class Complaints extends Migration
             $table->string('email');
             $table->string('subject');
             $table->string('comp_type');
+            $table->string('priority');
             $table->boolean('status')->default(0);
             $table->string('thumbnail');
             $table->text('body');

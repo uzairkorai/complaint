@@ -14,9 +14,29 @@ class DashboardController extends Controller
             return view('userdash');
         } elseif (Auth::user()->hasRole('writer')) {
             return view('writerdash');
-        }elseif(Auth::user()->hasRole('admin')) {
+        } elseif(Auth::user()->hasRole('admin')) {
             return view('dashboard');
+        } elseif(Auth::user()->hasRole('csr')) {
+            return view('st.csr');
+        }elseif(Auth::user()->hasRole('elite')) {
+            return view('st.csr');
+        }elseif(Auth::user()->hasRole('bootcamp')) {
+            return view('st.csr');
+        }elseif(Auth::user()->hasRole('incubator')) {
+            return view('st.csr');
+        }elseif(Auth::user()->hasRole('vbc')) {
+            return view('st.csr');
+        }elseif(Auth::user()->hasRole('meetups')) {
+            return view('st.csr');
+        }elseif(Auth::user()->hasRole('teachers')) {
+            return view('st.csr');
+        }elseif(Auth::user()->hasRole('services')) {
+            return view('st.csr');
+        }elseif(Auth::user()->hasRole('digitalmarketing')) {
+            return view('st.csr');
         }
+
+
     }
 
     public function myprofile()

@@ -58,7 +58,7 @@
                             <div class="flex col-md-6">
                                 <button><a href="/send">Done</a></button>
                             </div>
-                            {{-- @if (Auth::user()->hasRole('admin'))
+                            @if (Auth::user()->hasRole('admin'))
                                 <div>
                                     <form method="POST" action="/view">
                                         @csrf
@@ -105,7 +105,7 @@
                                         @endif
                                     </div>
                                 </div>
-                            @endif --}}
+                            @endif
                         </div>
                     </div>
                 </div>

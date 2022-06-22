@@ -21,8 +21,9 @@ class ComplaintController extends Controller
         $request = request()->validate([
             'email' => 'required',
             'subject' => 'required',
-            'thumbnail' => 'required',
+            // 'thumbnail' => 'required',
             'comp_type' => 'required',
+            'priority' => 'required',
             'body' => 'required',
             'phone_number' => 'required',
         ]);
@@ -38,7 +39,7 @@ class ComplaintController extends Controller
 
     public $sortField = 'created_at';
     public $sortDirection = 'desc';
-
+    public $orderBy = 'status';
     protected $queryString = ['sortField', 'sortDirection'];
 
     public function sortBy($field)
@@ -65,11 +66,22 @@ class ComplaintController extends Controller
         $data = Complaint::count();
         $dataa = Complaint::where('status',1)->count();
         $pending = Complaint::where('status',0)->count();
-
+        $dt = Complaint::where('comp_type', 'DT')->count();
+        $Bootcamp = Complaint::where('comp_type', 'Bootcamp')->count();
+        $Elite = Complaint::where('comp_type', 'Elite')->count();
+        $csr = Complaint::where('comp_type', 'csr')->count();
+        $Elite = Complaint::where('comp_type', 'Elite')->count();
+        $Elite = Complaint::where('comp_type', 'Elite')->count();
+        $Elite = Complaint::where('comp_type', 'Elite')->count();
+        $digitalmarketing = Complaint::where('comp_type', 'digitalmarketing')->count();
+        $vbc = Complaint::where('comp_type', 'vbc')->count();
+        $meetups = Complaint::where('comp_type', 'meetups')->count();
+        $teachers = Complaint::where('comp_type', 'teachers')->count();
+        $services = Complaint::where('comp_type', 'services')->count();
 
         // $dataa = Complaint::all();
 
-        return view('dashboard',  compact('data', 'dataa', 'pending'));
+        return view('dashboard',  compact('data', 'dataa', 'pending', 'dt', 'Bootcamp', 'Elite', 'csr', 'digitalmarketing', 'vbc' , 'meetups', 'teachers', 'services'));
     }
 
     // function dashb($id)
@@ -112,6 +124,4 @@ class ComplaintController extends Controller
         dd($data);
         // return view('admin.viewcomplaint',['messages'=>$data]);
     }
-
-
 }
